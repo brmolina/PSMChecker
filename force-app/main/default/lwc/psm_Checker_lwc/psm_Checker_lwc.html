@@ -1,0 +1,166 @@
+<template>
+    <div class="spinner">
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading..." variant="brand" size="large">
+            </lightning-spinner>
+        </template>
+    </div>
+    
+    <article class="slds-card">
+        <!-- <header class="slds-media slds-media_center">
+            <div class="slds-media__body"> -->
+        <div class="slds-card__header slds-grid">
+                    <!-- <h2 class="slds-card__header-title">
+                        <div class="slds-grid"> -->
+                            <div>
+                                <span>
+                                      <h2 class="slds-card__header-title">
+                                        <lightning-input    id="inputNumber"
+                                                            type="text"
+                                                            value={searchValue}
+                                                            label="Employee Number"
+                                                            onchange={searchKeyword}
+                                                            oncommit={handleSearchKeyword}
+                                        ></lightning-input>
+                                        <div class="slds-p-right_small"></div>
+                                        </h2>
+                                  </span>
+                                </div>
+                            <div class="slds-col slds-align-bottom">
+                                <span>
+                                    <!-- <h2 class="slds-card__header-title"> -->
+
+                                            <lightning-button label="Search"
+                                                        onclick={handleSearchKeyword}
+                                                        variant="brand"
+                                                        disabled={buttonDisabledTrue}>
+                                            </lightning-button>
+                                    <!-- </h2> -->
+
+                                </span>
+                            </div>
+                            <div class="slds-col_bump-right slds-align-bottom">
+                                <span>
+                                        
+                                            <lightning-button label="Extract Full PSM"
+                                                        onclick={extractPSM}
+                                                        variant="neutral"
+                                                        icon-name="utility:download"
+                                                        disabled={extractPSMButtonDisabledTrue}></lightning-button>
+
+                                        
+
+                                    
+
+                                </span>
+                            </div>
+                        <!-- </div>
+                    </h2> -->
+                </div>
+            <!-- </div>
+        </header> -->
+
+        <template if:true={employeesByNumber}>
+            <div class="slds-m-around_medium">
+                <div class="slds-scrollable_x" style="width:100%;">
+                    <lightning-datatable
+                        key-field="Id"
+                        data={employeesByNumber} hide-checkbox-column
+                        columns={employeeColumns}
+                        onrowaction={retrievePSM}
+                        column-widths-mode="auto"
+                        >
+                    </lightning-datatable>
+                </div>
+            </div>
+        </template>
+        <template if:true={accessPSMList}>
+            <lightning-accordion    active-section-name="With Access"
+                                    allow-multiple-sections-open>
+                <lightning-accordion-section name="With Access" label="List of PSM this Employee has access">
+                    <template if:true={accessPSMList}>
+                        <lightning-input type="search" label="Filter" onchange={updateAccessSearch}>
+                        </lightning-input>
+                        <div class="slds-m-around_medium">
+                            <div class="slds-scrollable_y" style="height:250px;">
+                                <lightning-datatable
+                                key-field="Id"
+                                data-id="accessPSMList"
+                                data={accessPSMList} hide-checkbox-column
+                                columns={accessPSMColumns}
+                                column-widths-mode="auto"
+                                sorted-by={sortBy}
+                                sorted-direction={sortDirection}
+                                onsort={doSorting}
+                                >
+                            </lightning-datatable>
+                        </div>
+                    </div>
+                </template>
+            </lightning-accordion-section>
+            <lightning-accordion-section name="Without Access" label="List of PSM this Employee has no access">
+                <template if:true={noAccessPSMList}>
+                        <lightning-input type="search" label="Filter" onchange={updateNoAccessSearch}>
+                        </lightning-input>
+                        <div class="slds-m-around_medium">
+                            <div class="slds-scrollable_y" style="height:250px;">
+                                <lightning-datatable
+                                    key-field="Id"
+                                    data-id="noAccessPSMList"
+                                    data={noAccessPSMList} hide-checkbox-column
+                                    columns={accessPSMColumns}
+                                    
+                                    sorted-by={sortBy}
+                                    sorted-direction={sortDirection}
+                                    onsort={doSorting}
+                                    >
+                    
+                                </lightning-datatable>
+                            </div>
+                        </div>
+                    </template>
+                </lightning-accordion-section>
+                <lightning-accordion-section name="Trending on OneSource" label="Trending on OneSource">
+                    <template if:true={trendingOnOneSourceList}>
+                        <lightning-input type="search" label="Filter" onchange={updateTrendingOnOneSourceSearch}>
+                        </lightning-input>
+                        <div class="slds-m-around_medium">
+                            <div class="slds-scrollable_y" style="height:250px;">
+                                <lightning-datatable
+                                key-field="Id"
+                                data-id="trendingOnOneSourceList"
+                                data={trendingOnOneSourceList} hide-checkbox-column
+                                columns={trendingOnOneSourceColumns}
+                                
+                                sorted-by={sortBy}
+                                sorted-direction={sortDirection}
+                                onsort={doSorting}
+                                > 
+                            </lightning-datatable>
+                            </div>
+                        </div>
+                    </template>
+                </lightning-accordion-section>
+                    <lightning-accordion-section name="External Links" label="External Links">
+                        <template if:true={externalLinkList}>
+                            <div class="slds-m-around_medium">
+                                <div class="slds-scrollable_y" style="height:250px;">
+                                    <lightning-datatable
+                                        key-field="Id"
+                                        data-id="externalLinkList"
+                                        data={externalLinkList} hide-checkbox-column
+                                        columns={externalLinksColumns}
+                                        column-widths-mode="auto"
+                                        sorted-by={sortBy}
+                                        sorted-direction={sortDirection}
+                                        onsort={doSorting}
+                                        > 
+                                    </lightning-datatable>
+                                </div>
+                            </div>
+                        </template>
+                    </lightning-accordion-section>
+            </lightning-accordion>
+        </template>
+    </article>
+</template>

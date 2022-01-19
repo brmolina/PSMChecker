@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>PSMExtractPermission</name>
+    </customPermissions>
+    <description>Permission to download Portal Security Matrix from PSM Checker page.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>PSM Extract Permission</label>
+</PermissionSet>
