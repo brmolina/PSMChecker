@@ -60,5 +60,6 @@ public class PSMCheckerControllerTest {
             employee.ELC_SubFunction__c,
             employee.ELC_Organization_Country_Region__c
 );
+        PSMCheckerController.extractPSM();
     }
 }
