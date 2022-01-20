@@ -42,31 +42,31 @@ const employeeColumns = [
     { label: 'Brand / Non Brand', fieldName: 'ELC_Brand_Non_Brand__c', wrapText: true, hideDefaultActions: true, initialWidth: 80},
     { label: 'Function', fieldName: 'ELC_Function__c', wrapText: true, hideDefaultActions: true, initialWidth: 80},
     { label: 'Sub Function', fieldName: 'ELC_SubFunction__c', wrapText: true, hideDefaultActions: true, initialWidth: 80},
-    { label: 'Organization Country / Region', fieldName: 'ELC_Organization_Country_Region__c', wrapText: true, hideDefaultActions: true, initialWidth: 80},
+    { label: 'Organization Country / Region', fieldName: 'ELC_Organization_Country_Region__c', wrapText: true, hideDefaultActions: true},
 ];
 const accessPSMColumns = [
     { label: 'Name', fieldName: 'url', wrapText: true, hideDefaultActions: true, sortable: "true", type: "url",
         typeAttributes: {label: {fieldName: "Name"}}, initialWidth: 70
     },
-    { label: 'Topic Name', fieldName: 'ELC_Topic_Name__c', wrapText: true, hideDefaultActions: true, sortable: "true", initialWidth: 250 },
-    { label: 'Sub Topic Name', fieldName: 'ELC_Sub_Topic_Name__c', wrapText: true, hideDefaultActions: true, sortable: "true", initialWidth: 250 },
-    { label: 'Link Name / Form Name', fieldName: 'ELC_Link_name__c', wrapText: true, hideDefaultActions: true, sortable: "true" },
+    { label: 'Topic Name', fieldName: 'ELC_Topic_Name__c', wrapText: true, hideDefaultActions: true, sortable: "true", initialWidth: 300 },
+    { label: 'Sub Topic Name', fieldName: 'ELC_Sub_Topic_Name__c', wrapText: true, hideDefaultActions: true, sortable: "true", initialWidth: 300 },
+    { label: 'Link Name / Form Name', fieldName: 'ELC_Link_name__c', wrapText: true, hideDefaultActions: true, sortable: "true", initialWidth: 2000 },
 
 ];
 const noAccessPSMColumns = [
     { label: 'Name', fieldName: 'url', wrapText: true, hideDefaultActions: true, sortable: "true", type: "url",
         typeAttributes: {label: {fieldName: "Name"}}, initialWidth: 70
     },
-    { label: 'Topic Name', fieldName: 'ELC_Topic_Name__c', wrapText: true, hideDefaultActions: true, sortable: "true", initialWidth: 250 },
-    { label: 'Sub Topic Name', fieldName: 'ELC_Sub_Topic_Name__c', wrapText: true, hideDefaultActions: true, sortable: "true", initialWidth: 250 },
-    { label: 'Link Name/Form Name', fieldName: 'ELC_Link_name__c', wrapText: true, hideDefaultActions: true, sortable: "true" },
+    { label: 'Topic Name', fieldName: 'ELC_Topic_Name__c', wrapText: true, hideDefaultActions: true, sortable: "true", initialWidth: 300 },
+    { label: 'Sub Topic Name', fieldName: 'ELC_Sub_Topic_Name__c', wrapText: true, hideDefaultActions: true, sortable: "true", initialWidth: 300 },
+    { label: 'Link Name/Form Name', fieldName: 'ELC_Link_name__c', wrapText: true, hideDefaultActions: true, sortable: "true", initialWidth: 2000 },
 
 ];
 const trendingOnOneSourceColumns = [
     { label: 'Name', fieldName: 'url', wrapText: true, hideDefaultActions: true, sortable: "true", type: "url",
         typeAttributes: {label: {fieldName: "Name"}}, initialWidth: 70
     },
-    { label: 'Link Name / Form Name', fieldName: 'ELC_Link_name__c', wrapText: true, hideDefaultActions: true, sortable: "true", initialWidth: 250 },
+    { label: 'Link Name / Form Name', fieldName: 'ELC_Link_name__c', wrapText: true, hideDefaultActions: true, sortable: "true", initialWidth: 300 },
     { label: 'Links Order', fieldName: 'ELC_Links_Order__c', wrapText: true, hideDefaultActions: true, sortable: "true", initialWidth: 80 },
     { label: 'ELC Job Function', fieldName: 'ELC_Job_Function__c', wrapText: true, hideDefaultActions: true, sortable: "true", initialWidth: 110 },
     { label: 'ELC Location', fieldName: 'ELC_Location__c', wrapText: true, hideDefaultActions: true, sortable: "true", initialWidth: 90 },
