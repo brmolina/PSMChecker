@@ -391,6 +391,7 @@ export default class Psm_Checker_lwc extends LightningElement {
                     preparePSMExtractItem.ELC_Link_keywords__c = result[i].ELC_Link_keywords__c;
                     preparePSMExtractItem.ELC_Icon_Type__c = result[i].ELC_Icon_Type__c;
                     preparePSMExtractItem.RecordTypeName = result[i].RecordType.Name;
+                    preparePSMExtractItem.ELC_MC_External_ID_From_Dev__c = result[i].ELC_MC_External_ID_From_Dev__c;
                     preparePSMExtractList.push(preparePSMExtractItem);
                    //console.log('preparePSMExtractList ==> '+JSON.stringify(preparePSMExtractList));
                 }
@@ -428,6 +429,7 @@ export default class Psm_Checker_lwc extends LightningElement {
         { column: 'ELC_Link_Keywords__c', type: String, value: psmExtract => psmExtract.ELC_Link_keywords__c},
         { column: 'ELC_Icon_Type__c', type: String, value: psmExtract => psmExtract.ELC_Icon_Type__c},
         { column: 'Record Type Name', type: String, value: psmExtract => psmExtract.RecordTypeName},
+        { column: 'ELC_MC_External_ID_From_Dev__c', type: String, value: psmExtract => psmExtract.ELC_MC_External_ID_From_Dev__c},
 
     ]
 

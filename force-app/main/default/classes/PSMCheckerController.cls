@@ -182,7 +182,7 @@ public class PSMCheckerController {
         List<ELC_MasterConfiguration__c> pSMExtract = new List<ELC_MasterConfiguration__c>();
         pSMExtract = [Select  Id, Name, ELC_Master_Configuration__r.ELC_Topic_Name__c, ELC_Master_Configuration__r.Name, ELC_Master_Configuration2__r.ELC_Sub_Topic_Name__c, ELC_Master_Configuration2__r.Name, 
         ELC_Link_name__c, ELC_Location__c, ELC_Location_Type__c, ELC_Job_Function__c, ELC_Function__c, ELC_Hierarchy__c, ELC_Payroll__c, ELC_Correspondence_Language__c, Indicator__c, ELC_Brand__c,
-        ELC_Additional_Privileges__c, ELC_Links__c, ELC_Links_Order__c, ELC_Link_keywords__c, ELC_Icon_Type__c, RecordType.Name
+        ELC_Additional_Privileges__c, ELC_Links__c, ELC_Links_Order__c, ELC_Link_keywords__c, ELC_Icon_Type__c, RecordType.Name, ELC_MC_External_ID_From_Dev__c
         FROM ELC_MasterConfiguration__c WHERE ELC_Inactive__c = false AND RecordType.Name = 'Links' ORDER BY ELC_Master_Configuration__r.ELC_Topic_Name__c ASC];
         return pSMExtract;
     }
