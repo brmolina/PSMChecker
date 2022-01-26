@@ -1,0 +1,126 @@
+<template>
+    <div class="spinner">
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading..." variant="brand" size="large">
+            </lightning-spinner>
+        </template>
+    </div>
+
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid slds-gutters_x-small">
+            <div class="slds-col slds-size_1-of-4">
+                <span>
+                      <h2 class="slds-card__header-title">
+                        <lightning-input    id="inputLocation"
+                                            name="inputLocation"
+                                            type="text"
+                                            value={inputLocationValue}
+                                            label="Location"
+                                            placeholder="Country;State;City;Building Name"
+                                            onchange={searchKeyword}
+                                            oncommit={clearValues}
+                        ></lightning-input>
+                    </h2>
+                    <div class="slds-m-top_xxx-small">
+                        <lightning-pill-container items={locationItems} onitemremove={handleItemRemove}>
+                        </lightning-pill-container>
+                    </div>
+                    <div class="slds-m-top_xxx-small">
+                        <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                            <template for:each={searchLocationRecords} for:item="serecord">
+                                <li role="presentation" class="slds-listbox__item" key={serecord.recId}>
+                                    <div 
+                                        data-id={serecord.recId} 
+                                        data-name={serecord.recName} 
+                                        onclick={addSearchValueList} 
+                                        class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" 
+                                        role="option">
+                                        {serecord.recName}
+
+                                        <span class="slds-media__body">
+                                            <!-- <span class="slds-listbox__option-text slds-listbox__option-text_entity">{serecord.recName}</span> -->
+                                            <!-- <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">{objectName} • {serecord.recName}</span> -->
+                                        </span>
+                                    </div>
+                                    
+                                </li>
+                            </template>
+                        </ul>
+                        <div if:true={noLocationResult}>
+                            No result found.
+                        </div>
+                        <div if:true={loadingLocation}>
+                            Loading...
+                        </div>
+                    </div>
+                </span>
+            </div>
+
+            <div class="slds-col slds-size_1-of-4">
+                <span>
+                    <h2 class="slds-card__header-title">
+                      <lightning-input    id="inputJobFunction"
+                                          name='inputJobFunction'
+                                          type="text"
+                                          value={inputJobFunctionValue}
+                                          label="Job Function"
+                                          placeholder="highLevelOrganization;JobArea"
+                                          onchange={searchKeyword}
+                                          oncommit={clearValues}
+                      ></lightning-input>
+                      <div class="slds-p-right_small"></div>
+                      </h2>
+                      <div class="slds-m-top_xxx-small">
+                        <lightning-pill-container items={jobFunctionItems} onitemremove={handleItemRemove}>
+                        </lightning-pill-container>
+                      </div>
+              </span>
+            </div>
+            <div class="slds-col slds-size_1-of-4">
+                <span>
+                    <h2 class="slds-card__header-title">
+                      <lightning-input    id="inputFunction"
+                                          name='inputFunction'
+                                          type="text"
+                                          value={functionValue}
+                                          label="Function"
+                                          placeholder="..Sub-Function; orgCountryRegion"
+                                          onchange={searchKeyword}
+                                          oncommit={clearValues}
+                      ></lightning-input>
+                      <div class="slds-p-right_small"></div>
+                      </h2>
+                      <div class="slds-m-top_xxx-small">
+                        <lightning-pill-container items={functionItems} onitemremove={handleItemRemove}>
+                        </lightning-pill-container>
+                      </div>
+              </span>
+            </div>
+            <div class="slds-col slds-size_1-of-4">
+                <span>
+                    <h2 class="slds-card__header-title">
+                      <lightning-input    id="inputCorrespondenceLanguage"
+                                          name='inputCorrespondenceLanguage'
+                                          type="text"
+                                          value={correspondenceLanguageValue}
+                                          label="Correspondence Language"
+                                          placeholder="Correspondence Language"
+                                          onchange={searchKeyword}
+                                          oncommit={clearValues}
+                      ></lightning-input>
+                      <div class="slds-p-right_small"></div>
+                      </h2>
+                      <div class="slds-m-top_xxx-small">
+                        <lightning-pill-container items={correspondenceLanguageItems} onitemremove={handleItemRemove}>
+                        </lightning-pill-container>
+                      </div>
+              </span>
+            </div>
+        </div>
+        <div class="slds-card__body slds-card__body_inner">
+            
+        </div>
+
+    </article>
+    
+</template>

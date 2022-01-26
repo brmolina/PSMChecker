@@ -24,17 +24,16 @@
         <members>TriggerBypass</members>
         <members>PSMCheckerController</members>
         <members>PSMCheckerControllerTest</members>
-        <members>ELC_Test_DataFactory</members>
-        <members>ELC_ContactHelperTest</members>
+      <!--   <members>ELC_Test_DataFactory</members> lines 118, 119, 749, (807 to 835), 846-->
         <name>ApexClass</name>
     </types>
     <types>
         <members>psm_Checker_lwc</members>
         <name>LightningComponentBundle</name>
     </types>
-    <types>
-        <members>ELC_Contact</members>
+  <!--  <types>
+        <members>ELC_Contact</members> lines 2 and 33
         <name>ApexTrigger</name>
-    </types>
+    </types> -->
     <version>52.0</version>
 </Package>

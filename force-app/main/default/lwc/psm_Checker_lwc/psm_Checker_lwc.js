@@ -13,8 +13,6 @@ import { loadScript } from "lightning/platformResourceLoader";
 import workbook from "@salesforce/resourceUrl/writeExcel";
 import USER_PERMISSION from '@salesforce/customPermission/PSMExtractPermission';
 
-const ALLOWED_PROFILES = ["System Administrator", "OHR Manager"];
-
 const employeeColumns = [
     {   type: 'button',
         typeAttributes: {
