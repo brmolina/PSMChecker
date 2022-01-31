@@ -545,7 +545,7 @@ export default class Psm_Checker_lwc extends LightningElement {
             }
         })
         if(!event.target.value){
-            this.noAccessPSMList = [...this.allNoAccessPSMList];
+            this.trendingOnOneSourceList = [...this.allTrendingOnOneSourceList];
         }
     }
 }

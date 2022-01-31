@@ -7,13 +7,14 @@
     </div>
 
     <article class="slds-card">
-        <div class="slds-card__header slds-grid slds-gutters_x-small">
-            <div class="slds-col slds-size_1-of-4">
+        <div class="slds-card__header slds-grid slds-wrap slds-grid_vertical-align-center slds-grid_align-spread">
+            
+            <div class="slds-col slds-size_1-of-4 slds-p-right_x-small">
                 <span>
                       <h2 class="slds-card__header-title">
                         <lightning-input    id="inputLocation"
                                             name="inputLocation"
-                                            type="text"
+                                            type="search"
                                             value={inputLocationValue}
                                             label="Location"
                                             placeholder="Country;State;City;Building Name"
@@ -25,55 +26,78 @@
                         <lightning-pill-container items={locationItems} onitemremove={handleItemRemove}>
                         </lightning-pill-container>
                     </div>
-                    <div class="slds-m-top_xxx-small">
-                        <ul class="slds-listbox slds-listbox_vertical" role="presentation">
-                            <template for:each={searchLocationRecords} for:item="serecord">
-                                <li role="presentation" class="slds-listbox__item" key={serecord.recId}>
-                                    <div 
-                                        data-id={serecord.recId} 
-                                        data-name={serecord.recName} 
-                                        onclick={addSearchValueList} 
-                                        class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" 
-                                        role="option">
-                                        {serecord.recName}
-
-                                        <span class="slds-media__body">
-                                            <!-- <span class="slds-listbox__option-text slds-listbox__option-text_entity">{serecord.recName}</span> -->
-                                            <!-- <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">{objectName} • {serecord.recName}</span> -->
-                                        </span>
-                                    </div>
-                                    
-                                </li>
-                            </template>
-                        </ul>
-                        <div if:true={noLocationResult}>
-                            No result found.
-                        </div>
-                        <div if:true={loadingLocation}>
-                            Loading...
+                    <div class="slds-m-top_xxx-small slds-is-relative">
+                        <div style="position:absolute; background-color: white; width:85%">
+                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                <template for:each={searchLocationRecords} for:item="serecord">
+                                    <li role="presentation" class="slds-listbox__item" key={serecord.recId}>
+                                        <div 
+                                            data-value={serecord.value} 
+                                            data-listname ="locationList"
+                                            onclick={addSearchValueList} 
+                                            class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" 
+                                            role="option">
+                                            {serecord.value}
+                                        </div>
+                                        
+                                    </li>
+                                </template>
+                            </ul>
+                            <div if:true={noLocationResult}>
+                                No result found.
+                            </div>
+                            <div if:true={loadingLocation}>
+                                Loading...
+                            </div>
                         </div>
                     </div>
                 </span>
             </div>
-
+            
+            
             <div class="slds-col slds-size_1-of-4">
                 <span>
                     <h2 class="slds-card__header-title">
-                      <lightning-input    id="inputJobFunction"
-                                          name='inputJobFunction'
-                                          type="text"
-                                          value={inputJobFunctionValue}
-                                          label="Job Function"
-                                          placeholder="highLevelOrganization;JobArea"
-                                          onchange={searchKeyword}
-                                          oncommit={clearValues}
-                      ></lightning-input>
-                      <div class="slds-p-right_small"></div>
-                      </h2>
-                      <div class="slds-m-top_xxx-small">
+                        <lightning-input    id="inputJobFunction"
+                        name='inputJobFunction'
+                        type="search"
+                        value={inputJobFunctionValue}
+                        label="Job Function"
+                        placeholder="highLevelOrganization;JobArea"
+                        onchange={searchKeyword}
+                        oncommit={clearValues}
+                        ></lightning-input>
+                        <div class="slds-p-right_small"></div>
+                    </h2>
+                    <div class="slds-m-top_xxx-small">
                         <lightning-pill-container items={jobFunctionItems} onitemremove={handleItemRemove}>
                         </lightning-pill-container>
-                      </div>
+                    </div>
+                    <div class="slds-m-top_xxx-small slds-is-relative">
+                        <div style="position:absolute; background-color: white; width:85%">
+                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                <template for:each={searchJobFunctionRecords} for:item="serecord">
+                                    <li role="presentation" class="slds-listbox__item" key={serecord.recId}>
+                                        <div 
+                                            data-value={serecord.value}
+                                            data-listname="jobFunctionList"
+                                            onclick={addSearchValueList} 
+                                            class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" 
+                                            role="option">
+                                            {serecord.value}
+                                        </div>
+                                        
+                                    </li>
+                                </template>
+                            </ul>
+                            <div if:true={noJobFunctionResult}>
+                                No result found.
+                            </div>
+                            <div if:true={loadingJobFunction}>
+                                Loading...
+                            </div>
+                        </div>
+                    </div>
               </span>
             </div>
             <div class="slds-col slds-size_1-of-4">
@@ -81,8 +105,8 @@
                     <h2 class="slds-card__header-title">
                       <lightning-input    id="inputFunction"
                                           name='inputFunction'
-                                          type="text"
-                                          value={functionValue}
+                                          type="search"
+                                          value={inputFunctionValue}
                                           label="Function"
                                           placeholder="..Sub-Function; orgCountryRegion"
                                           onchange={searchKeyword}
@@ -94,30 +118,106 @@
                         <lightning-pill-container items={functionItems} onitemremove={handleItemRemove}>
                         </lightning-pill-container>
                       </div>
+                      <div class="slds-m-top_xxx-small slds-is-relative">
+                        <div style="position:absolute; background-color: white; width:85%">
+                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                <template for:each={searchFunctionRecords} for:item="serecord">
+                                    <li role="presentation" class="slds-listbox__item" key={serecord.recId}>
+                                        <div 
+                                            data-value={serecord.value}
+                                            data-listname="functionList"
+                                            onclick={addSearchValueList} 
+                                            class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" 
+                                            role="option">
+                                            {serecord.value}
+                                        </div>
+                                        
+                                    </li>
+                                </template>
+                            </ul>
+                            <div if:true={noFunctionResult}>
+                                No result found.
+                            </div>
+                            <div if:true={loadingFunction}>
+                                Loading...
+                            </div>
+                        </div>
+                    </div>
               </span>
             </div>
             <div class="slds-col slds-size_1-of-4">
                 <span>
-                    <h2 class="slds-card__header-title">
-                      <lightning-input    id="inputCorrespondenceLanguage"
-                                          name='inputCorrespondenceLanguage'
-                                          type="text"
-                                          value={correspondenceLanguageValue}
-                                          label="Correspondence Language"
-                                          placeholder="Correspondence Language"
-                                          onchange={searchKeyword}
-                                          oncommit={clearValues}
-                      ></lightning-input>
-                      <div class="slds-p-right_small"></div>
-                      </h2>
-                      <div class="slds-m-top_xxx-small">
-                        <lightning-pill-container items={correspondenceLanguageItems} onitemremove={handleItemRemove}>
-                        </lightning-pill-container>
-                      </div>
+                    <div class="slds-grid slds-grid_align-space grid_vertical-align-start">
+                        <div class="slds-col">
+                            <span>
+                                <lightning-input data-id="activeMC" type="toggle" onchange={changeMCToggle} message-toggle-active="Active MC" message-toggle-inactive="Inactive MC" checked></lightning-input>
+                            </span>
+                        </div>
+                        <div class="slds-col">
+                            <span>
+                                <div class="slds-grid slds-grid_align-space">
+                                    <div class="slds-col">
+                                        <lightning-button
+                                                            label="Search Trending Articles"
+                                                            variant="Neutral"
+                                                            onclick={handleSearchTrendingArticles}>
+                                        </lightning-button>
+                                    </div>
+                                </div>
+<!--                                     <div class="slds-p-around_medium slds-float_right">
+                                    </div> -->
+
+                            </span>
+                        </div>
+                    </div>
               </span>
             </div>
         </div>
         <div class="slds-card__body slds-card__body_inner">
+
+            <template if:true={showTrendingList}>
+                <lightning-accordion active-section-name="Trending On OneSource" allow-multiple-sections-open>
+                    <lightning-accordion-section name="Trending On OneSource" label="Trending On OneSource"> 
+                        <div class="slds-grid slds-gutters slds-grid_vertical-align-end slds-grid_align-spread">
+                            <div class="slds-col slds-size_10-of-12">
+                                <span>
+                                    <lightning-input type="search" label="Filter" onchange={updateTrendingOnOneSourceSearch}>
+                                    </lightning-input>
+                                </span>
+                            </div>
+                            <div class="slds-col slds-size_2-of-12">
+                                <span>
+                                    <lightning-button label="Download List"
+                                                                onclick={download}
+                                                                variant="neutral"
+                                                                icon-name="utility:download"
+                                                                disabled={extractPSMButtonDisabledTrue}></lightning-button>
+                                </span>
+                            </div>
+                        </div>
+                        
+                            <div class="slds-m-around_medium">
+                                <div class="slds-scrollable_y" style="height:250px;">
+                                    <lightning-datatable
+                                    key-field="Id"
+                                    data-id="trendingOnOneSourceList"
+                                    data={trendingOnOneSourceList} hide-checkbox-column
+                                    columns={trendingOnOneSourceColumns}
+                                    
+                                    sorted-by={sortBy}
+                                    sorted-direction={sortDirection}
+                                    onsort={doSorting}
+                                    > 
+                                </lightning-datatable>
+                                </div>
+                            </div>      
+                    </lightning-accordion-section>
+                </lightning-accordion>
+            </template>
+
+            <!-- <div class="slds-float_right">
+                <button class="slds-button slds-button_neutral">Search Trending Articles</button>
+            </div> -->
             
         </div>
 
