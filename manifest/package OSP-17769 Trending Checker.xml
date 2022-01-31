@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>PSMExtractPermission</members>
+        <name>CustomPermission</name>
+    </types>
+    <types>
+        <members>PSM_Extract_Permission</members>
+        <name>PermissionSet</name>
+    </types>
+    <types>
+        <members>writeExcel</members>
+        <name>StaticResource</name>
+    </types>
+    <types>
+        <members>Trending_Checker</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>Trending_Checker</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>TrendingCheckerController</members>
+        <members>TrendingCheckerControllerTest</members>
+        <members>ELC_Test_DataFactory</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>trending_Checker</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <version>52.0</version>
+</Package>

@@ -115,8 +115,8 @@ public with sharing class ELC_Test_DataFactory{
             Contact con = new Contact( FirstName = 'Ricky' + i,
                                       LastName = 'Doe'+i,
                                       Email = 'ricky.doe'+i+ '@test.com',
-                                      ELC_Additional_Privileges__c = 'HR Contact', //Bruno Molina for PSM Check 31/12/2021
-                                      ELC_Correspondence_Language__c ='American English', //Bruno Molina for PSM Check 31/12/2021
+                                      ELC_Additional_Privileges__c = 'HR Contact', //OSP-17826 / OSP-17864 Bruno Molina for PSM Check 31/12/2021
+                                      ELC_Correspondence_Language__c ='American English', //OSP-17826 / OSP-17864 Bruno Molina for PSM Check 31/12/2021
                                       ELC_Terminated_Date__c = Date.today().addDays(10),
                                       ELC_RelatedUser__c = UserInfo.getUserId(),
                                       ELC_Candidate_ID__c = String.valueOf(Integer.valueOf(math.rint(math.random()*1000000))),
@@ -746,7 +746,7 @@ public with sharing class ELC_Test_DataFactory{
             topics.add(new ELC_MasterConfiguration__c(ELC_Component__c = 'Header Footer Page',
                                                       recordTypeId = topicRTId,
                                                       ELC_Topic_Name__c = 'My Team',
-                                                      ELC_Inactive__c = false, //Bruno Molina for PSM Check 31/12/2021
+                                                      ELC_Inactive__c = false, //OSP-17826 / OSP-17864 Bruno Molina for PSM Check 31/12/2021
                                                       ELC_MC_External_ID_From_Dev__c ='g5'+String.valueOf(System.now().getTime())+i+Math.random(),
                                                       ELC_URL__c = '/apex/ELC_OS_Portal_LinksDetails?topic=My Team',
                                                       ELC_Order__c = 1));
@@ -804,7 +804,7 @@ public with sharing class ELC_Test_DataFactory{
         return topics;
     }
     
-    // Added By Bruno Molina
+    // Added By Bruno Molina - OSP-17826 / OSP-17864
     public static List<ELC_MasterConfiguration__c> getLinksWithTopics(Integer total, Boolean insertRecords, Id linkRTId, Id topicId){
         List<ELC_MasterConfiguration__c> links = new List<ELC_MasterConfiguration__c>();
         for(Integer i = 0; i < total; i++){
@@ -832,7 +832,7 @@ public with sharing class ELC_Test_DataFactory{
             insert links;
         }
         return links;
-    }
+    } //OSP-17826 / OSP-17864 end
     
     // Added By Prateek
     public static List<ELC_Employee_Related_Information__c> getRelatedEmployee(Integer total, Boolean insertRecords, Id contactId){
@@ -843,7 +843,6 @@ public with sharing class ELC_Test_DataFactory{
                                                                    ELC_Work_Location_Building_Name__c='The Bay - Winnipeg',
                                                                    ELC_Global_Grade__c='All',
                                                                    ELC_Brand_Non_Brand__c = 'Brand',
-                                                                   ELC_Primary__c = true, // Bruno Molina for PSM Checker test 31/12/2021 >to bypass the trigger, when starting test class, TriggerBypass.setDoNotRunTrigger(); then in the trigger, put all logic inside if (TriggerBypass.doNotBypassTrigger()){}
                                                                    ELC_Work_Location_Country__c='Canada',
                                                                    ELC_Work_Location_City__c = 'Victoria',
                                                                    ELC_Work_Location_State__c = 'Manitoba',
@@ -865,6 +864,37 @@ public with sharing class ELC_Test_DataFactory{
         return relatedEmp;
     }
     
+    
+    //added by Bruno OSP-17826 / OSP-17864  Bruno Molina for PSM Checker test 31/12/2021
+    public static List<ELC_Employee_Related_Information__c> getRelatedEmployee2(Integer total, Boolean insertRecords, Id contactId){
+        List<ELC_Employee_Related_Information__c> relatedEmp = new List<ELC_Employee_Related_Information__c>();
+        for(Integer i = 0; i < total; i++){
+            relatedEmp.add(new ELC_Employee_Related_Information__c(ELC_Employee__c = contactId,
+                                                                   Name='Test',
+                                                                   ELC_Work_Location_Building_Name__c='The Bay - Winnipeg',
+                                                                   ELC_Global_Grade__c='All',
+                                                                   ELC_Brand_Non_Brand__c = 'Brand',
+                                                                   ELC_Primary__c = true, 
+                                                                   ELC_Work_Location_Country__c='Canada',
+                                                                   ELC_Work_Location_City__c = 'Victoria',
+                                                                   ELC_Work_Location_State__c = 'Manitoba',
+                                                                   ELC_Location__c = 'CA.Winnipeg.The Bay - Winnipeg.Retail Store',
+                                                                   ELC_Work_Location_Type__c='Retail Store',
+                                                                   ELC_Job_Function__c='Sales',
+                                                                   ELC_Job_Sub_Function__c='Point of Sale Non Management',
+                                                                   ELC_High_Level_Organization__c='Brand',
+                                                                   ELC_Job_Area__c = 'Beauty Advisor/Artist',
+                                                                   ELC_Assignment_Status__c = 'Active Assignment',
+                                                                   ELC_Payroll__c = 'All',
+                                                                   ELC_Assignment_Category__c = 'All'
+                                                                  ));
+        }
+        if(insertRecords){
+            insert relatedEmp;
+        }
+        return relatedEmp;
+    }
+    
     // Added By Prateek
     public static List<Contact> getSetupContact(Integer total,Boolean insertRecords, Id userId){
         List<Contact> contacts = new List<Contact>();
@@ -876,7 +906,7 @@ public with sharing class ELC_Test_DataFactory{
                                      Email = 'tocooper@estee.ca',
                                      ELC_Correspondence_Language__c = 'American English',
                                      ELC_Manager_Flag__c = true,
-                                     ELC_Additional_Privileges__c = 'Has Company Email;Sumtotal User;HR Contact',
+                                     ELC_Additional_Privileges__c = 'Has Company Email;HR Contact',//OSP-12706 - removed Sumtotal user
                                      ELC_Work_Location_Country__c = 'Canada',
                                      ELC_RelatedUser__c = userId));
         }

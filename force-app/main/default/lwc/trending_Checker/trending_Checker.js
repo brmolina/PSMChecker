@@ -76,11 +76,9 @@ export default class Trendindg_Checker extends LightningElement {
         this.noLocationResult = false;
         this.noJobFunctionResult = false;
         this.noFunctionResult = false;
-        /* this.noCorrespondenceLanguageResult = false; */
         this.searchLocationRecords.splice(0,this.searchLocationRecords.length);
         this.searchJobFunctionRecords.splice(0,this.searchJobFunctionRecords.length);
         this.searchFunctionRecords.splice(0,this.searchFunctionRecords.length);
-        /* this.searchCorrespondenceLanguageRecords.splice(0,this.searchCorrespondenceLanguageRecords.length); */
         let eventName = event.target.name;
         //console.log('search Keyword event ==> ', eventName);
         if(eventName == 'inputLocation'){
@@ -262,19 +260,18 @@ export default class Trendindg_Checker extends LightningElement {
             if(eventName == 'inputLocation'){
                 this.inputLocationValue = '';
                 this.noLocationResult = false;
-                setTimeout(() => {this.searchLocationRecords.length = 0}, 100);
+                setTimeout(() => {this.searchLocationRecords.length = 0}, 300);
                 
             }
             if(eventName == 'inputJobFunction'){
                 this.inputJobFunctionValue = '';
                 this.noJobFunctionResult = false;
-                setTimeout(() => {this.searchJobFunctionRecords.length = 0}, 100);
+                setTimeout(() => {this.searchJobFunctionRecords.length = 0}, 300);
             }
             if(eventName == 'inputFunction'){
-                console.log('inputFunction clear block entered');
                 this.inputFunctionValue = '';
                 this.noFunctionResult = false;
-                setTimeout(() => {this.searchFunctionRecords.length = 0}, 100);
+                setTimeout(() => {this.searchFunctionRecords.length = 0}, 300);
                 
             }
 
