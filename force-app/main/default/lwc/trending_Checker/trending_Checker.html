@@ -194,13 +194,13 @@
                         </div>
                         
                             <div class="slds-m-around_medium">
-                                <div class="slds-scrollable_y" style="height:250px;">
+                                <div class="slds-scrollable_y" style="height:500px;">
                                     <lightning-datatable
                                     key-field="Id"
                                     data-id="trendingOnOneSourceList"
                                     data={trendingOnOneSourceList} hide-checkbox-column
                                     columns={trendingOnOneSourceColumns}
-                                    
+                                    wrap-text-max-lines="3"
                                     sorted-by={sortBy}
                                     sorted-direction={sortDirection}
                                     onsort={doSorting}
